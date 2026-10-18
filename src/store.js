@@ -202,7 +202,7 @@ export const store = createStore({
         /*--------------------------------------------------------------------*/
         getDMResearches: (state) => {
         
-            return Math.floor((state.data['boostProduction'].count + state.data['boostEnergy'].count + state.data['boostScience'].count + state.data['boostEnergyStorage'].count) / 25) * 2
+            return Math.floor((state.data[''].count + state.data['boostEnergy'].count + state.data['boostScience'].count + state.data['boostEnergyStorage'].count) / 25) * 2
         },
         /*--------------------------------------------------------------------*/
         getDMRank: (state) => {
@@ -934,8 +934,8 @@ export const store = createStore({
             state.data['upgradeEnergy1'] = { id:'upgradeEnergy1', unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:1000 }], notifs:['technologiesPane'], }
             state.data['upgradeEnergy2'] = { id:'upgradeEnergy2', unlocked:false, count:0, max:1, costType:'FIXED', baseCosts:[{ id:'science', count:5000 }], notifs:['technologiesPane'], unlocks:['techEnergyStorage1'], }
             /*----------------------------------------------------------------*/
-            state.data['boostProduction'] =    { id:'boostProduction',    unlocked:false, count:0,          costType:'EXPONENTIAL', baseCosts:[{ id:'science', count:100000    }], notifs:['technologiesPane'], }
-            state.data['boostScience'] =       { id:'boostScience',       unlocked:false, count:0,          costType:'EXPONENTIAL', baseCosts:[{ id:'science', count:10000000  }], notifs:['technologiesPane'], }    
+            state.data['boostProduction'] =    { id:'boostProduction',    unlocked:false, count:0,          costType:'EXPONENTIAL', baseCosts:[{ id:'science', count:10000    }], notifs:['technologiesPane'], }
+            state.data['boostScience'] =       { id:'boostScience',       unlocked:false, count:0,          costType:'EXPONENTIAL', baseCosts:[{ id:'science', count:100000  }], notifs:['technologiesPane'], }    
             state.data['boostEnergy'] =        { id:'boostEnergy',        unlocked:false, count:0, max:25,  costType:'EXPONENTIAL', baseCosts:[{ id:'science', count:10000000  }], notifs:['technologiesPane'], }    
             state.data['boostEnergyStorage'] = { id:'boostEnergyStorage', unlocked:false, count:0, max:200, costType:'EXPONENTIAL', baseCosts:[{ id:'science', count:100000000 }], notifs:['technologiesPane'], }
             /*----------------------------------------------------------------*/
