@@ -1917,11 +1917,9 @@ export const store = createStore({
                     }
                     if ('outputs' in item) {
                         item.outputs.forEach(output => {
-                            let tempBoost = boost
-                            console.log('test1')
-                            console.log(boost)
-                            if (output.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost += 0.02 * state.data['boostScience'].count
-                            temp[output.id].production += (output.count * item.active) * (1 + tempBoost) * (1 + temp[output.id].boost) * state.speedFactor
+                            let tempBoost = boost + 1
+                            if (output.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost *= Math.pow(1.2, state.data['boostScience'].count)  
+                            temp[output.id].production += (output.count * item.active) * (tempBoost) * (1 + temp[output.id].boost) * state.speedFactor
                         })
                     }
                 }                
