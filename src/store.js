@@ -1867,6 +1867,7 @@ export const store = createStore({
             boost *= prodBoost
             boost *= 1 + dmBoost
             boost *= 1 + capitalBoost
+            boost -= 1
             
             state.stars.forEach(item => {
                 if (item.status == 'owned') {
@@ -1917,7 +1918,7 @@ export const store = createStore({
                     if ('outputs' in item) {
                         item.outputs.forEach(output => {
                             let tempBoost = boost
-                            if (output.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost *= Math.pow(1.2, state.data['boostScience'].count)
+                            if (output.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost += 0.02 * state.data['boostScience'].count
                             temp[output.id].production += (output.count * item.active) * (1 + tempBoost) * (1 + temp[output.id].boost) * state.speedFactor
                         })
                     }
