@@ -1867,7 +1867,6 @@ export const store = createStore({
             boost *= prodBoost
             boost *= 1 + dmBoost
             boost *= 1 + capitalBoost
-            boost -= 1
             
             state.stars.forEach(item => {
                 if (item.status == 'owned') {
