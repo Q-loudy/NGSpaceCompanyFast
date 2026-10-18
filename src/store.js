@@ -55,6 +55,7 @@ export const store = createStore({
             storagePrice: 1,
             storageExcess: 1,
             titanSwapingCount: 0,
+            speedFactor: 2,
             /*----------------------------------------------------------------*/
             lastUpdateTime: new Date().getTime(),
             /*----------------------------------------------------------------*/
@@ -355,6 +356,7 @@ export const store = createStore({
         setLocale(state, payload) { state.locale = payload },
         setCompanyName(state, payload) { state.companyName = payload },
         setAutoSaveInterval(state, payload) { state.autoSaveInterval = payload * 1000 },
+        setSpeedFactor(state, payload) { state.speedFactor = payload },
         setNotifAutoSave(state, payload) { state.notifAutoSave = payload },
         setNotifAchievement(state, payload) { state.notifAchievement = payload },
         setDisplayLockedItems(state, payload) { state.displayLockedItems = payload },
@@ -1917,7 +1919,7 @@ export const store = createStore({
                         item.outputs.forEach(output => {
                             let tempBoost = boost
                             if (output.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost += 0.02 * state.data['boostScience'].count
-                            temp[output.id].production += (output.count * item.active) * (1 + tempBoost) * (1 + temp[output.id].boost)
+                            temp[output.id].production += (output.count * item.active) * (1 + tempBoost) * (1 + temp[output.id].boost) * state.speedFactor
                         })
                     }
                 }                
