@@ -1853,7 +1853,7 @@ export const store = createStore({
 
             let prodBoost = 0
             item = state.data['boostProduction']
-            if (item.unlocked && item.count > 0) { prodBoost += 0.01 * item.count }
+            if (item.unlocked && item.count > 0) { prodBoost *= Math.pow(1.1, item.count) }
             
             let dmBoost = 0
             item = state.data['boostDarkmatter']
@@ -1918,7 +1918,7 @@ export const store = createStore({
                     if ('outputs' in item) {
                         item.outputs.forEach(output => {
                             let tempBoost = boost
-                            if (output.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost += 0.02 * state.data['boostScience'].count
+                            if (output.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost *= Math.pow(1.2, state.data['boostScience'].count)
                             temp[output.id].production += (output.count * item.active) * (1 + tempBoost) * (1 + temp[output.id].boost) * state.speedFactor
                         })
                     }
