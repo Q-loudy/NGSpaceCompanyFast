@@ -1918,6 +1918,8 @@ export const store = createStore({
                     if ('outputs' in item) {
                         item.outputs.forEach(output => {
                             let tempBoost = boost
+                            console.log('test1')
+                            console.log(boost)
                             if (output.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost += 0.02 * state.data['boostScience'].count
                             temp[output.id].production += (output.count * item.active) * (1 + tempBoost) * (1 + temp[output.id].boost) * state.speedFactor
                         })
@@ -1941,8 +1943,6 @@ export const store = createStore({
 
             state.resources.forEach(item => {
                 let tempBoost = boost
-                console.log('test')
-                console.log(boost)
                 if (item.id == 'science' && state.data['boostScience'].unlocked && state.data['boostScience'].count > 0) tempBoost += 0.02 * state.data['boostScience'].count            
                 temp[item.id].prod = temp[item.id].production - temp[item.id].consumption
                 if (temp[item.id].prod > -0.001 && temp[item.id].prod < 0.001) temp[item.id].prod = 0
