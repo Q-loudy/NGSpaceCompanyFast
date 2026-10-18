@@ -1851,7 +1851,7 @@ export const store = createStore({
                 temp[item.id] = { prod:0, boost:0, consumption:0, production:0 }
             })
 
-            let prodBoost = 0
+            let prodBoost = 1
             item = state.data['boostProduction']
             if (item.unlocked && item.count > 0) { prodBoost *= Math.pow(1.1, item.count) }
             
@@ -1864,7 +1864,7 @@ export const store = createStore({
             if (item.unlocked && item.count > 0) { state.resources.forEach(res => { if ('storage' in res && res.count >= res.storage) capitalBoost += 0.05 }) }
             
             let boost = 1
-            boost *= 1 + prodBoost
+            boost *= prodBoost
             boost *= 1 + dmBoost
             boost *= 1 + capitalBoost
             boost -= 1
